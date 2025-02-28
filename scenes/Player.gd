@@ -15,9 +15,9 @@ var run_tap_interval = 0.25
 var last_right_tap_time = 0
 var last_left_tap_time = 0
 
-
 # Node AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
+
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -45,9 +45,9 @@ func _physics_process(delta):
 				is_dashing = true
 			else:
 				is_dashing = false
-				
+
 			last_right_tap_time = Time.get_ticks_msec() / 1000.0
-			
+
 	# Dashing Left
 	if Input.is_action_pressed("ui_left"):
 		direction.x -= 1
@@ -56,9 +56,8 @@ func _physics_process(delta):
 				is_dashing = true
 			else:
 				is_dashing = false
-				
+
 			last_left_tap_time = Time.get_ticks_msec() / 1000.0
-			
 
 	# Kontrol gerakan apakah Dash atau Walk
 	if direction != Vector2.ZERO:
@@ -86,14 +85,15 @@ func _physics_process(delta):
 	if position.y > get_viewport_rect().size.y:
 		get_tree().reload_current_scene()
 
+
 func update_animation_and_direction():
 	# Arah sprite
 	# Menghadap kiri
 	if velocity.x < 0:
 		animated_sprite.flip_h = true
-	# Menghadap kanan  
+	# Menghadap kanan
 	elif velocity.x > 0:
-		animated_sprite.flip_h = false  
+		animated_sprite.flip_h = false
 
 	# Animasi
 	if not is_on_floor():
