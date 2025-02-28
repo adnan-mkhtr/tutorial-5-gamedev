@@ -16,7 +16,7 @@
         # Kondisi jika karakter menyentuh lantai maka jumlah lompatan akan direset menjadi 0
         if is_on_floor():
           jump_count = 0
-        #kondisi jika tombol "ui_up" (Panah atas) ditekan dan jumlah lompatan kurang dari 2, maka kecepatan vertikal diatur ke jump_speed dan jump_count bertambah 1.
+        # Kondisi jika tombol "ui_up" (Panah atas) ditekan dan jumlah lompatan kurang dari 2, maka kecepatan vertikal diatur ke jump_speed dan jump_count bertambah 1.
         if Input.is_action_just_pressed("ui_up") and jump_count < max_jumps:
           velocity.y = jump_speed
           jump_count += 1
@@ -42,7 +42,7 @@
 
             last_right_tap_time = Time.get_ticks_msec() / 1000.0
 
-    # Dashing ke kiri sama seperti ke kanan, tapi untuk tombol "ui_left" (panah kiri) dan direction.x -= 1.
+    # Dashing ke kiri sama seperti ke kanan, namun untuk tombol "ui_left" (panah kiri) dan direction.x -= 1.
     ```
 
 3. **Crouching**
