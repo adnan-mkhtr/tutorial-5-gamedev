@@ -1,14 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsyfep1odrxje"]
+[gd_scene load_steps=3 format=3 uid="uid://dsyfep1odrxje"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cc4syhu84iy52" path="res://scenes/Ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dy0gmu4ybdt14" path="res://scenes/Player.tscn" id="2_o3ygw"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Ground" parent="." instance=ExtResource("1")]
-position = Vector2(507.708, 363.86)
+position = Vector2(511, 554)
 
 [node name="Ground2" parent="." instance=ExtResource("1")]
 position = Vector2(789.149, 294.054)
 
 [node name="Ground3" parent="." instance=ExtResource("1")]
-position = Vector2(225.95, 294.562)
+position = Vector2(227, 294)
+
+[node name="Ground4" parent="." instance=ExtResource("1")]
+position = Vector2(1140, 294)
+
+[node name="Ground5" parent="." instance=ExtResource("1")]
+position = Vector2(1492, 294)
+
+[node name="Ground6" parent="." instance=ExtResource("1")]
+position = Vector2(1140, 294)
+
+[node name="Player" parent="." instance=ExtResource("2_o3ygw")]
+position = Vector2(482, 36)
