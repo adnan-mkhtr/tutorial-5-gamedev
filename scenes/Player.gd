@@ -20,6 +20,7 @@ var last_left_tap_time = 0
 @onready var collision_area = $Area2D
 @onready var coin_stream = $CoinStreamPlayer
 
+
 func _physics_process(delta):
 	var direction = Vector2.ZERO
 	# Gravitasi
@@ -76,7 +77,7 @@ func _physics_process(delta):
 				velocity.x = walk_speed if not is_crouching else crouch_speed
 	else:
 		velocity.x = 0
-	
+
 	# Kondisi saat Player bersentuhan dengan Coin
 	for area in collision_area.get_overlapping_areas():
 		if area.is_in_group("coin"):
