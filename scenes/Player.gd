@@ -17,7 +17,8 @@ var last_left_tap_time = 0
 
 # Node AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
-
+@onready var collision_area = $Area2D
+@onready var coin_stream = $CoinStreamPlayer
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -75,7 +76,14 @@ func _physics_process(delta):
 				velocity.x = walk_speed if not is_crouching else crouch_speed
 	else:
 		velocity.x = 0
-
+	
+	# Kondisi saat Player bersentuhan dengan Coin
+	for area in collision_area.get_overlapping_areas():
+		if area.is_in_group("coin"):
+			area.collect()
+			coin_stream.play()
+			await coin_stream.finished
+			print("Coins collected")
 	# Fungsi Arah sprite dan animasi
 	update_animation_and_direction()
 
@@ -97,10 +105,10 @@ func update_animation_and_direction():
 
 	# Animasi
 	if not is_on_floor():
-		animated_sprite.play("Jump")
+		animated_sprite.play("jump")
 	elif is_crouching:
-		animated_sprite.play("Crouch")
+		animated_sprite.play("crouch")
 	elif velocity.x != 0:
-		animated_sprite.play("Run")
+		animated_sprite.play("walk right")
 	else:
-		animated_sprite.play("Idle")
+		animated_sprite.play("idle")

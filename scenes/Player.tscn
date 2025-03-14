@@ -1,55 +1,72 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy0gmu4ybdt14"]
+[gd_scene load_steps=12 format=3 uid="uid://dy0gmu4ybdt14"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_yf5l0"]
-[ext_resource type="Texture2D" uid="uid://ckavd12djpprg" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_duck.png" id="2_3i7uq"]
-[ext_resource type="Texture2D" uid="uid://7vg2j1865jam" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_idle.png" id="2_aeekr"]
-[ext_resource type="Texture2D" uid="uid://dsdlgggvwlbt5" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_jump.png" id="3_jveo4"]
-[ext_resource type="Texture2D" uid="uid://btcds8l8o3byi" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_walk1.png" id="5_ok8ja"]
-[ext_resource type="Texture2D" uid="uid://4wq6uun8gmay" path="res://assets/kenney_platformercharacters/PNG/Female/Poses/female_walk2.png" id="6_2iet4"]
+[ext_resource type="Texture2D" uid="uid://rkvkq36srlxg" path="res://assets/player_tilesheet.png" id="2_pt6pg"]
+[ext_resource type="AudioStream" uid="uid://b3hnoajh2ksf" path="res://assets/coin-recieved-230517.wav" id="3_gxaw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lx0g"]
 size = Vector2(90, 97)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2llrl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bttf"]
+atlas = ExtResource("2_pt6pg")
+region = Rect2(240, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_realy"]
+atlas = ExtResource("2_pt6pg")
+region = Rect2(0, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irc0a"]
+atlas = ExtResource("2_pt6pg")
+region = Rect2(80, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udgcn"]
+atlas = ExtResource("2_pt6pg")
+region = Rect2(0, 110, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyxae"]
+atlas = ExtResource("2_pt6pg")
+region = Rect2(80, 110, 80, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rxh0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3i7uq")
+"texture": SubResource("AtlasTexture_2bttf")
 }],
 "loop": true,
-"name": &"Crouch",
+"name": &"crouch",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aeekr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_aeekr")
+"texture": SubResource("AtlasTexture_realy")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jveo4")
+"texture": SubResource("AtlasTexture_irc0a")
 }],
 "loop": true,
-"name": &"Jump",
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ok8ja")
+"texture": SubResource("AtlasTexture_udgcn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_2iet4")
+"texture": SubResource("AtlasTexture_hyxae")
 }],
 "loop": true,
-"name": &"Run",
-"speed": 4.0
+"name": &"walk right",
+"speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtu8"]
+size = Vector2(91, 95)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(321, 56)
@@ -60,5 +77,15 @@ position = Vector2(1, 9.5)
 shape = SubResource("RectangleShape2D_1lx0g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2llrl")
-animation = &"Idle"
+sprite_frames = SubResource("SpriteFrames_7rxh0")
+animation = &"walk right"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 8.5)
+shape = SubResource("RectangleShape2D_pbtu8")
+
+[node name="CoinStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gxaw7")
+volume_db = 3.0

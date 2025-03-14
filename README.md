@@ -119,3 +119,35 @@
     else:
         animated_sprite.play("Idle")
     ```
+
+# Tutorial 5 - Game Development
+
+## Latihan Mandiri: Membuat dan Menambah Variasi Aset
+
+### Proses Pengerjaan
+
+1. **Objek Baru (Coin)**
+
+    - Membuat scene baru dengan menambahkan objek `Coin` dengan `Area2D` dan `AnimatedSprite2D`.
+    - Menggunakan spritesheet koin dari [Kenney.nl](https://kenney.nl/) dengan animasi yang saya buat.
+    - Menambahkan script `Coin.gd` untuk mengatur animasi dan penghapusan saat diambil atau saat bersentuhan dengan player.
+
+2. **Efek Suara (SFX)**
+
+    - Mengunduh efek suara "coin" dari [Pixabay.com](https://pixabay.com/sound-effects/search/coin/).
+    - Menambahkan `AudioStreamPlayer2D` ke scene `Player` dan memutar suara saat diambil atau bersentuhan dengan player.
+
+3. **Musik Latar (BGM)**
+
+    - Mengunduh musik latar bertema platformer dari [OpenGameArt.org](https://opengameart.org/).
+    - Menambahkan `AudioStreamPlayer` di root scene dengan menambahkan script `Main.gd` dan memutar background music pada saat scene dijalankan.
+
+4. **Interaksi Pemain**
+    - Mengubah `Player.gd` untuk mendeteksi tabrakan atau bersentuhan dengan `Coin` menggunakan `Area2D`.
+    - Memanggil fungsi `collect` yang ada pada `Coin.gd` untuk mengetahui apakah Coin berhasil di ambil.
+
+### Referensi
+
+-   Spritesheet: [Kenney.nl](https://kenney.nl/)
+-   Efek Suara: [Pixabay.com](https://pixabay.com/sound-effects/search/coin/)
+-   Musik Latar: [OpenGameArt.org](https://opengameart.org/)
